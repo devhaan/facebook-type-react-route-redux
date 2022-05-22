@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class PostsList extends Component {
+
+
+  
   render() {
     const { posts } = this.props;
     return (
@@ -10,10 +14,12 @@ class PostsList extends Component {
           <div className="post-wrapper" key={post._id}>
             <div className="post-header">
               <div className="post-avatar">
-                <img
-                  src="https://cdn-icons.flaticon.com/png/512/4440/premium/4440953.png?token=exp=1653056433~hmac=51b2bb58cb4dfc57ecf3d683b4ce2237"
-                  alt="user-pic"
-                />
+                <Link to={`/user/${post.user._id}`}>
+                  <img
+                    src="https://cdn-icons.flaticon.com/png/512/4440/premium/4440953.png?token=exp=1653056433~hmac=51b2bb58cb4dfc57ecf3d683b4ce2237"
+                    alt="user-pic"
+                  />
+                </Link>
                 <div>
                   <span className="post-author">{post.user.name}</span>
                   <span className="post-time">a minute ago</span>
@@ -63,7 +69,6 @@ class PostsList extends Component {
 //in PostsList.propTypes // prototypes will be case sensitive
 PostsList.propTypes = {
   posts: PropTypes.array.isRequired,
-}
-;
+};
 
 export default PostsList;

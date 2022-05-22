@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Navigate, Outlet } from 'react-router-dom';
 import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 import { fetchPosts } from '../actions/post';
-import { Navbar, Home, Page404, Login, SignUp } from './index';
+import {
+  Navbar,
+  Home,
+  Page404,
+  Login,
+  SignUp,
+  PrivateRoute,
+  Settings,
+  UserProfile,
+} from './index';
 import jwtDecode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 
-const Settings = () => <div>Setting</div>;
-
-const PrivateRoute = ({ isLoggedin }) => {
-  return isLoggedin ? <Outlet /> : <Navigate replace to="/login" />;
-};
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
@@ -45,7 +48,18 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             {/* isme v6 har routes ka to way is new */}
-            <Route element={<PrivateRoute isLoggedin={auth.isLoggedin} />}>
+            <Route
+              element={
+                <PrivateRoute isLoggedin={auth.isLoggedin} altpath={'/login'} />
+              }
+            >
+              <Route path="/user/:userId" element={<UserProfile />} />
+            </Route>
+            <Route
+              element={
+                <PrivateRoute isLoggedin={auth.isLoggedin} altpath={'/login'} />
+              }
+            >
               <Route path="/settings" element={<Settings />} />
             </Route>
             {/* isme v6 har routes ka to way is new */}

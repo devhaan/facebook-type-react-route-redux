@@ -5,13 +5,13 @@ export function fetchPosts() {
     const url = APIUrls.fetchPosts();
     console.log('url', url);
     fetch(url)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        dispatch(updatePosts(data.data.posts));
-      });
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      dispatch(updatePosts(data.data.posts));
+    });
   };
 }
 

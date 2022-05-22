@@ -15,3 +15,10 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 
 // to clear the error alert after displayed
 export const CLEAR_ERROR_ALERT = 'CLEAR_ERROR_ALERT';
+export const EDIT_USER_SUCCESSFUL = 'EDIT_USER_SUCCESSFUL';
+export const EDIT_USER_FAILED = 'EDIT_USER_FAILED';
+
+//profile settings
+export const USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
+export const USER_PROFILE_FAILURE = 'USER_PROFILE_FAILURE';
+export const FETCH_USER_PROFILE = 'FETCH_USER_PROFILE';
